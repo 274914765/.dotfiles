@@ -19,6 +19,12 @@ sed ':a;N;$!ba;s/\n//g'  file.txt
 # To print x-y line
 sed -n 'x,yp' file.txt
 
+# Append to end of same line
+sed -i "${line_number}s/$/$ $current_connection |${backend_service}/" file.txt
+
+# Merge multi-blank
+sed -i 's/[  ][  ]*/ /g' file.txt
+
 # delete empty line
 sed '/^$/d' input.txt > output.txt
 
