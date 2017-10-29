@@ -13,7 +13,7 @@ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 openssl req -text -noout -in server.csr
 
 # To show certificate information for generated certificate
-openssl x509 -text -noout -in server.crt 
+openssl x509 -text -noout -in server.crt
 
 # To view certificate expiration:
 echo | openssl s_client -connect <hostname>:443 2> /dev/null | \
@@ -63,22 +63,27 @@ openssl dsaparam -genkey 512 -out dsa_site_prikey.key
 openssl req -config siteOpenssl.cnf -key dsa_site_prikey.key -new -out dsa_site_cert.req
 openssl x509 -req -in dsa_site_cert.req -CA dsa_ca_cert.pem -CAkey dsa_ca_prikey.key -out dsa_site_cert.pem -CAcreateserial
 
-#从证书中提取公钥
+# extract public key
 openssl x509 -in site_cert.pem -pubkey -noout > site_pubkey.key
 
-#从证书中提取证书请求文件
+# create crl
+openssl ca -revoke newcert.pem -keyfile demoCA/private/cakey.pem -passin pass:"123456" -cert demoCA/cacert.pem
+openssl ca -gencrl -utf8 -keyfile demoCA/private/cakey.pem -passin pass:"123456" -cert demoCA/cacert.pem -out newcrl.pem
+
+# extract certificate req
 openssl x509 -x509toreq -in site_cert.pem -out site_cert.req -signkey site_prikey.key -passin pass:"123456"
 
 # 去除私钥文件密码
 openssl rsa -in prikey.key -out prikey.key
 
-# # 证书格式转换
-openssl x509 -outform DER -in site_cert.der -out site_cert.pem
+# format convert
+openssl pkcs12 -in mysite.p12 -nokeys -passin pass:123456 -out mysite.pem
+openssl pkcs12 -in mysite.p12 -nocerts -passin pass:123456 -out mysite.key
 
 # to verify Certificate
 openssl verify -CAfile certself.pem certuser.pem
 
-#SSL握手
+# ssl handshake
 openssl s_server -accept 2009 -key server_prikey.key -cert server_cert.pem
 openssl s_client -connect 192.168.41.122:443 -key ca.key -cert ca.pem -state -reconnect
 

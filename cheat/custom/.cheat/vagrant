@@ -15,7 +15,7 @@ config.vm.network "public_network"
 config.vm.provision :shell, path: "provision.sh"
 
 # Start vm
-vagrant up
+vagrant up --debug
 
 # Connect to started instance
 vagrant ssh
