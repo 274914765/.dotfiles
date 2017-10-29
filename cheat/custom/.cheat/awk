@@ -26,3 +26,5 @@ ping 192.168.41.254 | awk '{ print $0, strftime("%Y-%m-%d %H:%M:%S",systime()) }
 # Print punctuation
 sudo ip addr list eth0 | grep -i "inet " | awk '{print $2}' | awk -F/ '{print $1}' | awk -F. '{print $1 "." $2 "." $3 ".1"}'
 
+# format print
+printf '1 2 3' | awk '{printf ("%s", $3)}'

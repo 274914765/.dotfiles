@@ -1,0 +1,17 @@
+# Convert a man page to pdf
+man -t bash | ps2pdf - bash.pdf
+
+# View the ascii chart
+man 7 ascii
+
+# View tcp
+man 7 tcp
+
+# view ip
+man 7 ip
+
+# View arp
+man 7 arp
+
+# View socket
+man 7 socket

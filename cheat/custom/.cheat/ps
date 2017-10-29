@@ -16,6 +16,10 @@ ps aux | grep '[h]ttpd'
 
 # sort by cpu
 ps aux | sort -nk 3:
+{ ps -eT -o%cpu,pid,tid,ppid,comm | sed -e 's/^ *//' | tr -s ' ' | grep -v CPU | sort -n -r | cut -d ' ' -f 1 | xargs -I{} echo -n "{} + " && echo ' 0'; } | bc -l
+LANG=C ps -eT -o%cpu,pid,tid,ppid,comm | grep -v CPU | sort -n -r | head -20
 
 # sort by memory
 ps aux | sort -rnk 4:
+{ ps -eT -o%mem,pid,tid,ppid,comm | sed -e 's/^ *//' | tr -s ' ' | grep -v MEM | sort -n -r | cut -d ' ' -f 1 | xargs -I{} echo -n "{} + " && echo ' 0'; } | bc -l
+LANG=C ps -e -o%mem,pid,tid,ppid,comm | grep -v MEM | sort -n -r | head -20
