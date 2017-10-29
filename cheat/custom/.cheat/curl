@@ -37,7 +37,13 @@ curl -v -X TRACE http://www.yourserver.com
 # Limit the rate of a download
 curl --limit-rate 1000B -O http://path.to.the/file
 
+# Get your global IP
+curl httpbin.org/ip
+
+# Post file
 curl -vvkl --digest -u root:password -F "filename=@/root/LiSi_Windows_5.3.7_2016_09_22_15_30_27.zip" http://192.168.41.83:10009/common/upload.php
 
+# Add http header
 curl -v -H "PO: UrlEncode=YES" -H "PU: CN=%ba%d8%ba%ec%bd%dc" -H "PR: granularity=uri;uri=http:%2f%2f192.168.1.8:80%2f" -H "PL: IP=192.168.41.80" http://192.168.190.7/test/pms.php
+
 

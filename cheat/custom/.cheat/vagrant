@@ -14,7 +14,7 @@ config.vm.network "public_network"
 # Add provision script to vagrant file
 config.vm.provision :shell, path: "provision.sh"
 
-# Start vm 
+# Start vm
 vagrant up
 
 # Connect to started instance
@@ -42,3 +42,7 @@ https://github.com/orishavit/vagrant-vmware-free
 # for ssl5
 useradd vboxadd -g daemon
 useradd -s /bin/bash -m -g root vagrant
+
+# snapshot
+vagrant snapshot save ie8.win7.x86 ie8.win7.x86.init
+vagrant snapshot restore ie8.win7.x86 ie8.win7.x86.init
