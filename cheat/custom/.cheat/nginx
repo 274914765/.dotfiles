@@ -1,5 +1,3 @@
-# debug
-master_process off;
+# debug configure
 daemon off;
-
-#
+master_process off;
