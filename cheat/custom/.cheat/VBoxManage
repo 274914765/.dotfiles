@@ -1,3 +1,7 @@
+# show vms
+VBoxManage list vms
+vboxmanage list hostonlyifs
+
 # CPU
 VBoxManage modifyvm "sag6.1.4" --x2apic off
 
@@ -25,10 +29,6 @@ VBoxManage modifyvm "sag6.1.4" --rtcuseutc off
 
 # 组
 VBoxManage modifyvm "sag6.1.4" --groups /ssl6
-
-# show vms
-VBoxManage list vms
-vboxmanage list hostonlyifs
 
 # add/del More than 4 Network Cards in Virtualbox
 VBoxManage modifyvm ssl6-dev --nic1 hostonly --hostonlyadapter1 "vboxnet0"

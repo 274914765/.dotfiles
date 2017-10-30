@@ -1,3 +1,4 @@
+# NRPd( Nginx based Reverse Proxy)
 find /cfg/NRP/ -name "protocol-http.conf.xslt" | xargs sed -i ''$(find /cfg/NRP/ -name "protocol-http.conf.xslt" | xargs grep -n "resolver_timeout" | head -n 1 | cut -d ":" -f 2)'aunderscores_in_headers on;\nignore_invalid_headers off;'
 find /cfg/NRP/ -name "protocol-http.conf" | xargs sed -i ''$(find /cfg/NRP/ -name "protocol-http.conf" | xargs grep -n "resolver_timeout" | head -n 1 | cut -d ":" -f 2)'aunderscores_in_headers on;\nignore_invalid_headers off;'
 
@@ -20,4 +21,3 @@ for cfg_dir in $(find /cfg/NRP -maxdepth 1 -mindepth 1 -type d); do
 done;
 
 alias cp='cp -i'
-
