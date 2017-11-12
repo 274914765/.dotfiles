@@ -1,6 +1,7 @@
 set breakpoint pending on
 
 # 初始化
+b ngx_init_cycle
 b ngx_http_init_request
 
 # 连接处理
@@ -11,6 +12,8 @@ b ngx_http_process_request_line
 b ngx_http_process_request
 
 # 业务处理
+ngx_http_handler
+ngx_http_proxy_handler
 
 # 访问日志
 
