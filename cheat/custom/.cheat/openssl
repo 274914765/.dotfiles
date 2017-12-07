@@ -27,41 +27,44 @@ openssl engine -vvvv dynamic \
 -pre LOAD
 
 # to create RSA Certificate
-openssl req -newkey rsa:1024 -keyout client.key -passout pass:"123456" -config siteOpenssl.cnf -new -out client.req
-openssl req -x509 -newkey rsa:1024 -keyout ca.key -passout pass:"123456" -config caOpenssl.cnf -new -out ca.pem
-openssl x509 -req -in client.req -CA ca.pem -CAkey ca.key -out client.pem -CAcreateserial -days 365 -passin pass:"123456"
+openssl req -x509 -newkey rsa:1024 -keyout ca.key -passout pass:"123456" -new -out ca.pem
+openssl req -newkey rsa:1024 -keyout client.key -passout pass:"123456" -new -out client.req
+openssl x509 -req -in client.req -CA ca.pem -CAkey ca.key -out client.pem -CAcreateserial -days `expr 5 \* 365` -passin pass:"123456"
 
 openssl genrsa -des -passout pass:"123456" -out ca.key 1024
-openssl req -config caOpenssl.cnf -key ca.key -passin pass:"123456" -new -out ca.req
+openssl req -key ca.key -passin pass:"123456" -new -out ca.req
 openssl x509 -req -in ca.req -signkey ca.key -passin pass:"123456" -out ca.pem
 
 openssl genrsa -des -passout pass:"123456" -out client.key 1024
-openssl req -config siteOpenssl.cnf -key client.key -passin pass:"123456" -new -out client.req
+openssl req -key client.key -passin pass:"123456" -new -out client.req
 openssl x509 -req -in client.req -CA ca.pem -CAkey ca.key -passin pass:"123456" -out client.pem -CAcreateserial
 
 # to create ECC Certificate
 /usr/local/ssl/bin/openssl  req -x509 -newkey ec:gm.param -keyout ecc-ca.key -passout pass:"123456" -config ecc-ca.cnf -new -out ecc-ca.pem
 
-/usr/local/ssl/bin/openssl ecparam -genkey -name prime256v1 -out ecc_ca.key 
+/usr/local/ssl/bin/openssl ecparam -genkey -name prime256v1 -out ecc_ca.key
 /usr/local/ssl/bin/openssl req -key ecc_ca.key -new -out ecc_ca.req
 /usr/local/ssl/bin/openssl x509 -req -in ecc_ca.req -signkey ecc_ca.key -out ecc_ca.pem
 
-/usr/local/ssl/bin/openssl ecparam -genkey -name prime256v1 -out ecc_server.key 
+/usr/local/ssl/bin/openssl ecparam -genkey -name prime256v1 -out ecc_server.key
 /usr/local/ssl/bin/openssl req -key ecc_server.key -new -out ecc_server.req
 /usr/local/ssl/bin/openssl x509 -req -in ecc_server.req -CA ecc_ca.pem -CAkey ecc_ca.key -out ecc_server.pem -CAcreateserial
 
-/usr/local/ssl/bin/openssl ecparam -genkey -name prime256v1 -out ecc_client.key 
+/usr/local/ssl/bin/openssl ecparam -genkey -name prime256v1 -out ecc_client.key
 /usr/local/ssl/bin/openssl req -key ecc_client.key -new -out ecc_client.req
 /usr/local/ssl/bin/openssl x509 -req -in ecc_client.req -CA ecc_ca.pem -CAkey ecc_ca.key -out ecc_client.pem -CAcreateserial
 
 # to create DSA Certificate
-openssl dsaparam -genkey 512 -out dsa_ca_prikey.key
-openssl req -config caOpenssl.cnf -key dsa_ca_prikey.key -new -out dsa_ca_cert.req
-openssl x509 -req -in dsa_ca_cert.req -signkey dsa_ca_prikey.key -out dsa_ca_cert.pem
+openssl dsaparam 2048 -out dsaparams.pem
+openssl req -newkey dsa:dsaparams.pem -keyout dsa_ca.key -new -x509 -days `expr 5 \* 365` -out dsa_ca.pem
 
-openssl dsaparam -genkey 512 -out dsa_site_prikey.key
-openssl req -config siteOpenssl.cnf -key dsa_site_prikey.key -new -out dsa_site_cert.req
-openssl x509 -req -in dsa_site_cert.req -CA dsa_ca_cert.pem -CAkey dsa_ca_prikey.key -out dsa_site_cert.pem -CAcreateserial
+openssl dsaparam -genkey 512 -out dsa_ca.key
+openssl req -key dsa_ca.key -new -out dsa_ca.req
+openssl x509 -req -in dsa_ca.req -signkey dsa_ca.key -out dsa_ca.pem
+
+openssl dsaparam -genkey 512 -out dsa_client.key
+openssl req -key dsa_client.key -new -out dsa_client.req
+openssl x509 -req -in dsa_client.req -CA dsa_ca.pem -CAkey dsa_ca.key -out dsa_client.pem -CAcreateserial
 
 # extract public key
 openssl x509 -in site_cert.pem -pubkey -noout > site_pubkey.key
@@ -73,12 +76,10 @@ openssl ca -gencrl -utf8 -keyfile demoCA/private/cakey.pem -passin pass:"123456"
 # extract certificate req
 openssl x509 -x509toreq -in site_cert.pem -out site_cert.req -signkey site_prikey.key -passin pass:"123456"
 
-# 去除私钥文件密码
-openssl rsa -in prikey.key -out prikey.key
-
 # format convert
 openssl pkcs12 -in mysite.p12 -nokeys -passin pass:123456 -out mysite.pem
 openssl pkcs12 -in mysite.p12 -nocerts -passin pass:123456 -out mysite.key
+openssl pkcs12 -export -inkey proxy.pem -in proxy.pem -nodes -out proxy.p12
 
 # to verify Certificate
 openssl verify -CAfile certself.pem certuser.pem

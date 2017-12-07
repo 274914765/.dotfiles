@@ -112,6 +112,7 @@ git clone --depth 1 <remote-url>
 
 # To unshallow a clone
 git pull --unshallow
+git pull origin develop develop
 
 # Create a new repository
 git clone git@git.koal.com:hehongjie/test.git
@@ -125,6 +126,7 @@ git push -u origin master
 cd existing_folder
 git init
 git remote add origin git@git.koal.com:hehongjie/jd-mid.git
+git remote set-url origin git@git.koal.com:hehongjie/wrk.git https://github.com/jayce/wrk.git
 git add .
 git commit
 git push -u origin master
