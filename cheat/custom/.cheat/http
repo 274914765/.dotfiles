@@ -195,3 +195,6 @@ http --session=user2 -a user2:password example.org X-Bar:Foo
 http --session=/tmp/session.json example.orghttp --session=/tmp/session.json admin.example.orghttp --session=~/.httpie/sessions/another.example.org/test.json example.orghttp --session-read-only=/tmp/session.json example.org
 
 https://192.168.41.72:444/mantis2/login_page.php
+
+# HTTP Keep-Alive
+http://www.nowamagic.net/academy/detail/23350305
