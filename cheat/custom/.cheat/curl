@@ -46,4 +46,7 @@ curl -vvkl --digest -u root:password -F "filename=@/root/LiSi_Windows_5.3.7_2016
 # Add http header
 curl -v -H "PO: UrlEncode=YES" -H "PU: CN=%ba%d8%ba%ec%bd%dc" -H "PR: granularity=uri;uri=http:%2f%2f192.168.1.8:80%2f" -H "PL: IP=192.168.41.80" http://192.168.190.7/test/pms.php
 
+# F5 Cookie Decoder
+curl -X POST -d '{"encoded_string": "429982218.55413.0000"}' http://api.techietek.com/v1/f5/cookie/decode
+
 

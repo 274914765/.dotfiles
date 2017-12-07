@@ -21,3 +21,8 @@ for cfg_dir in $(find /cfg/NRP -maxdepth 1 -mindepth 1 -type d); do
 done;
 
 alias cp='cp -i'
+
+ShellScript::execute("sudo /etc/init.d/rsyslog restart");
+sudo license -s
+/kssl/GAD/bin/version.php -v
+sudo dmidecode -t 2 | grep -i "Product Name" | awk -F':' '{print $2}'

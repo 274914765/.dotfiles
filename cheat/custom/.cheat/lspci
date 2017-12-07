@@ -1,0 +1,8 @@
+# Disk
+lspci -vvv -d '8086:3c2a'
+
+# Ethernet
+lspci -vvv -d '8086:1521'
+
+# Cavium
+lspci -vvv -d '177d:0010'
