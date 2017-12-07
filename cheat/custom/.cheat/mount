@@ -14,3 +14,9 @@ mount -t nfs example.com:/remote/example/dir /local/example/dir
 # To mount an ISO
 mount -o loop disk1.iso /mnt/disk
 
+# To mount tmpfs
+mount -t tmpfs -o size=256k,mode=0755 tmpfs /cfg/NRP/cache
+mount -o remount,rw,size=256k tmpfs /cfg/NRP/cache
+
+# To remount log disk
+mount -f -t ext3 -o remount,ro /dev/sdb1 /var/log

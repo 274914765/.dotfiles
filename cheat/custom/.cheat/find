@@ -43,6 +43,9 @@ find . ! -iwholename '*.git*' -type f
 # Find all files that have the same node (hard link) as MY_FILE_HERE
 find . -type f -samefile MY_FILE_HERE 2>/dev/null
 
+# Multiple conditions
+find . -name "*.htm" -o -name "*.html"
+
 # 批量删除行尾^M
 find -type f | xargs perl -pi -e 's/\r//g'
 

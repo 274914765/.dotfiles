@@ -1,3 +1,4 @@
+# https://zh.wikipedia.org/wiki/Dd_(Unix)
 # Read from {/dev/urandom} 2*512 Bytes and put it into {/tmp/test.txt}
 # Note: At the first iteration, we read 512 Bytes.
 # Note: At the second iteration, we read 512 Bytes.
@@ -21,5 +22,14 @@ dcfldd if=/dev/zero of=/dev/null bs=500K
 # This will output the sound from your microphone port to the ssh target computer's speaker port. The sound quality is very bad, so you will hear a lot of hissing.
 dd if=/dev/dsp | ssh -c arcfour -C username@host dd of=/dev/dsp
 
-# io test
-dd if=/dev/sda of=/dev/null &
+# io test purge write
+time dd if=/dev/zero of=test bs=4k count=10000 oflag=direct
+
+# io test purge read
+time dd if=test of=/dev/null bs=4k count=10000 iflag=direct
+
+# io sync once again
+time dd if=/dev/zero of=test bs=4k count=10000 oflag=dsync
+
+# io sync when final
+time dd if=/dev/zero of=test bs=4k count=10000 conv=fsync
