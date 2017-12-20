@@ -155,3 +155,5 @@ https://github.com/ivanr/bulletproof-tls
 # p7签名/验签
 openssl smime -sign -inkey rsa_site_prikey.key -signer rsa_site_cert.pem -in acl.xml -out acl.p7a
 openssl smime -verify -noverify -signer rsa_site_cert.pem -in acl.p7a -out acl.xml
+
+https://security.stackexchange.com/questions/150770/are-certificate-sans-case-sensitive

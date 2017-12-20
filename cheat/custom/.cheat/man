@@ -21,3 +21,6 @@ man 5 proc
 
 # View elf
 man elf
+
+# View term
+man 5 terminfo
