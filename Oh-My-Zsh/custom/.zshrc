@@ -3,7 +3,7 @@
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/tools/Typora:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/honghaier/.oh-my-zsh
+export ZSH=/Users/honghaier/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
