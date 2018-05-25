@@ -40,3 +40,18 @@ VBoxManage modifyvm ssl6-dev --macaddress5 080027BBA4A3
 
 # modify disk serial
 VBoxManage setextradata ssl5.2.4 "VBoxInternal/Devices/piix3ide/0/Config/PrimaryMaster/SerialNumber" "string:00000000000000000001"
+
+# start vm
+VBoxManage startvm "ssl5.2.4"
+
+# stop vm
+vboxmanage controlvm "ssl5.2.4" poweroff soft
+
+# date sync
+VBoxManage guestproperty set "ssl6-dev" "/VirtualBox/GuestAdd/VBoxService/--timesync-max-latency"
+
+# clipboard
+VBoxManage modifyvm "ie8.win7.x86" --clipboard bidirectional
+
+# usb
+sudo usermod -aG vboxusers honghaier

@@ -1,3 +1,6 @@
+# Make a box
+vagrant package --base ssl6-dev --output ../Tools/vagrant/linux/debian/ssl6-dev.box --vagrantfile Vagrantfile.linux
+
 # Initate Vagrant
 mkdir vag-vm; cd vag-vm
 vagrant init

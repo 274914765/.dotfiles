@@ -20,3 +20,6 @@ mount -o remount,rw,size=256k tmpfs /cfg/NRP/cache
 
 # To remount log disk
 mount -f -t ext3 -o remount,ro /dev/sdb1 /var/log
+
+# To mount smb
+sudo mount -t cifs //debian.koal.com/upload/hehongjie /home/honghaier/Downloads/Tools

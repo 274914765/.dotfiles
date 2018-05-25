@@ -1,3 +1,6 @@
+# User Agent Capabilities
+https://www.ssllabs.com/ssltest/clients.html
+
 # To create a 2048-bit private key:
 openssl genrsa -out server.key 2048
 
@@ -157,3 +160,9 @@ openssl smime -sign -inkey rsa_site_prikey.key -signer rsa_site_cert.pem -in acl
 openssl smime -verify -noverify -signer rsa_site_cert.pem -in acl.p7a -out acl.xml
 
 https://security.stackexchange.com/questions/150770/are-certificate-sans-case-sensitive
+
+# Save peer certificate
+openssl s_client -showcerts -connect shipit.ubuntu.com:443 < /dev/null | \
+awk -v c=-1 '/-----BEGIN CERTIFICATE-----/{inc=1;c++}
+             inc {print > ("level" c ".crt")}
+             /---END CERTIFICATE-----/{inc=0}'
