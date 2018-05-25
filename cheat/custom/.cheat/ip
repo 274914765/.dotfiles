@@ -26,8 +26,15 @@ ip route add default via 192.168.41.254 dev eth0
 # Add route via interface
 ip route add 192.168.0.0/24 dev eth0
 
-# Change your mac address 
+# Change your mac address
 ip link set dev eth0 address aa:bb:cc:dd:ee:ff
 
-# View neighbors (using ARP and NDP) 
+# View neighbors (using ARP and NDP)
 ip neighbor show
+
+# delete incomplete arp entry
+ip link set dev eth1 arp off && ip link set dev eth1 arp on
+
+# tun/tap
+ip tuntap add mode tun tun0
+ip link set dev tun0 up

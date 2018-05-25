@@ -49,6 +49,12 @@ P               paste before cursor
 dd              delete a line
 d{motion}       delete text that {motion} moves over
 
+# Search and replace with the `:substitute` (aka `:s`) command
+
+:s/foo/bar/	replace the first match of 'foo' with 'bar' on the current line only
+:s/foo/bar/g	replace all matches (`g` flag) of 'foo' with 'bar' on the current line only
+:%s/foo/bar/g	replace all matches of 'foo' with 'bar' in the entire file (`:%s`)
+:%s/foo/bar/gc	ask to manually confirm (`c` flag) each replacement 
 
 # Preceding a motion or edition with a number repeats it n times
 # Examples:
@@ -107,5 +113,15 @@ Ex Command
 :[range]join
 :[range]normal {commands}
 
+# plugin installl/uninstall
+vim +BundleInstall! +q
+vim +BundleClean +q
+
 # plugin
 bash-support.vim
+
+# plugin doc
+http://valloric.github.io/YouCompleteMe/#user-guide
+
+set textwidth=1024
+

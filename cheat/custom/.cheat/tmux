@@ -51,6 +51,9 @@ Ctrl-b %
 # Split windows vertically:
 Ctrl-b "
 
+# Rename windows
+pCtrl-b , newname
+
 #更换pane排版
 Ctrl+b “空格”
 
