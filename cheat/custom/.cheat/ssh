@@ -44,3 +44,7 @@ emacs /ssh:name@server:/path/to/file
 
 # Start for SSL6
 sudo start-stop-daemon --start --quiet --oknodo --pidfile /tmp/sshd-remote.pid --exec /usr/sbin/sshd -- -f /cfg/GAD/core/sshd.conf
+
+# Tunnel
+ssh -L 60022:192.168.80.197:22 root@192.168.80.197
+scp -P 60022 NRPHelper.php root@192.168.192.1:~/

@@ -1,2 +1,17 @@
 # sar -d 1
 ls -l /dev | awk '$5=="8," && $6=="16"'
+
+# all
+sar -A -f /var/log/sysstat/sa23
+
+# cpu
+sar -u -f /var/log/sysstat/sa23
+
+# memory
+sar -r -f /var/log/sysstat/sa23
+
+# 页面交换
+sar -W -f /var/log/sysstat/sa23
+
+#
+sar -k CUSTOM -f /var/log/sysstat/sa23

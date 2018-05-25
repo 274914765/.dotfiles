@@ -26,3 +26,6 @@ top -h
 
 # Order the display by sorting on <key> in descending order
 top -o <key>
+
+# Output into a file
+top -n 1 -b > file.txt
