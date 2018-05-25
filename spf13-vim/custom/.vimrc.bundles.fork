@@ -9,7 +9,6 @@ Bundle 'kristijanhusak/vim-multiple-cursors'
 Bundle 'vim-scripts/restore_view.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'majutsushi/tagbar'
 Bundle 'DrawIt'
 
 "Bundle 'mhinz/vim-startify'
