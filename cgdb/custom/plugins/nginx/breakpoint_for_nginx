@@ -9,10 +9,15 @@ b ngx_http_process_request_line
 
 # 请求处理
 b ngx_http_process_request
+b ngx_http_read_client_request_body
 
 # 业务处理
+b ngx_http_proxy_handler
 
 # 访问日志
+b ngx_http_log_request
+b ngx_http_log_handler
+b ngx_http_log_variable
 
 # SSL握手
 b ngx_http_ssl_handshake
@@ -21,3 +26,7 @@ b ngx_ssl_handshake
 # 输入过滤链
 
 # 输出过滤链
+#
+
+# io
+b ngx_create_temp_file
