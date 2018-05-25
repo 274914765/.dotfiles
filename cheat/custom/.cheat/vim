@@ -120,4 +120,8 @@ vim +BundleClean +q
 # plugin
 bash-support.vim
 
+# plugin doc
+http://valloric.github.io/YouCompleteMe/#user-guide
+
 set textwidth=1024
+

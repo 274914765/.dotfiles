@@ -49,4 +49,11 @@ curl -v -H "PO: UrlEncode=YES" -H "PU: CN=%ba%d8%ba%ec%bd%dc" -H "PR: granularit
 # F5 Cookie Decoder
 curl -X POST -d '{"encoded_string": "429982218.55413.0000"}' http://api.techietek.com/v1/f5/cookie/decode
 
+# compressed
+curl -vk -1 --compressed https://192.168.80.199/login.php
 
+# keepalive
+curl -vk -1 https://192.168.80.199/ https://192.168.80.199/login.php
+
+# Socks5 Proxy
+curl -x socks5h://127.0.0.1:1080 -kv https://solarianprogrammer.com

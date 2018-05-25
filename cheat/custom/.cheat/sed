@@ -33,3 +33,6 @@ sed '/^\s*$/d' input.txt > output.txt
 
 # Print specify line
 sed -n '28197,28221p' file.txt
+
+# replace '\r\n' with ','
+sed -E ':a;N;$!ba;s/\r{0,1}\n/,/g' file.txt
