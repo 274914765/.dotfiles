@@ -1,28 +1,29 @@
-set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
-set termencoding=utf-8
-set encoding=utf-8
-set pastetoggle=<F5>
-set tabstop=2 shiftwidth=2 expandtab
-
-" 取消提示：“请按 ENTER 或其它命令继续”
-set shortmess=atI
-set nomore
-
-" 设置使用鼠标复制内容到剪切板
-set mouse=v
+" vim options {
+    set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+    set termencoding=utf-8
+    set encoding=utf-8
+    set pastetoggle=<F5>
+    set tabstop=2 shiftwidth=2 noexpandtab
+" }
+"
+" spf13 options {
+    " Disable whitespace stripping
+    let g:spf13_keep_trailing_whitespace = 1
+" }
 
 " YouCompleteMe {
-	let g:ycm_global_ycm_extra_conf = '/home/honghaier/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+    let g:ycm_global_ycm_extra_conf = '/root/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+    nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+    nnoremap <leader>gi :YcmCompleter GoToDefinition<CR>
 " }
 "
 
 " vim-colors-solarized {
-	if has('gui_running')
-			set background=light
-	else
-			set background=dark
-	endif
-	syntax enable
-	colorscheme solarized
+    if has('gui_running')
+        set background=light
+    else
+        set background=dark
+    endif
+    syntax enable
+    colorscheme solarized
 " }
-"
