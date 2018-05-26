@@ -1,6 +1,0 @@
-# 文档
-texdoc thuthesis
-
-# 编译
-xelatex demo.tex
-latexmk demo.tex

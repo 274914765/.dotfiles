@@ -1,3 +1,0 @@
-net-snmp-config --default-mibdirs
-
-net-snmp-config --snmpconfpath
