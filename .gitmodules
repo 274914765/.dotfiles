@@ -1,0 +1,3 @@
+[submodule "cheat/custom/.cheat"]
+	path = cheat/custom/.cheat
+	url = git@github.com:274914765/Cheat-Sheet.git

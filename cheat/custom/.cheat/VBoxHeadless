@@ -1,2 +1,0 @@
-# start vm
-VBoxHeadless -startvm "ssl5.2.4" &
