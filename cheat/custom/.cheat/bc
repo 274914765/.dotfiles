@@ -7,3 +7,5 @@ echo "obase=2;ibase=10;100" | bc
 
 # Decimal
 scale=5
+
+echo 'obase=16;ibase=16;C06D1000-C06A5E78' | bc

@@ -26,3 +26,6 @@ ShellScript::execute("sudo /etc/init.d/rsyslog restart");
 sudo license -s
 /kssl/GAD/bin/version.php -v
 sudo dmidecode -t 2 | grep -i "Product Name" | awk -F':' '{print $2}'
+
+# 6.1.4 SP3
+# SSL6.1.4SP3升级包，建议在init的内核文件中将非系统启动必须的驱动都去掉

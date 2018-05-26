@@ -155,3 +155,8 @@ git push origin v0.0.0.1
 
 gst | grep -ri "类型变更" | awk  '{print $2}' | xargs git checkout  --
 gst | grep -ri "删除" | awk  '{print $2}' | xargs git rm
+
+gst | grep -ri "modified" | awk  '{print $3}' | xargs git checkout  --
+gst | grep -ri "deleted" | awk  '{print $3}' | xargs git checkout  --
+gst | grep -ri "typechange" | awk  '{print $3}' | xargs git checkout  --
+gst | awk  '{print $2}' | xargs /bin/rm -rf

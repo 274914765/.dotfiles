@@ -51,3 +51,12 @@ curl -X POST -d '{"encoded_string": "429982218.55413.0000"}' http://api.techiete
 
 # flow statistic
 curl -v -w '%{size_request} %{size_header} %{size_download}' http://127.0.0.1:65520/status
+
+# compressed
+curl -vk -1 --compressed https://192.168.80.199/login.php
+
+# keepalive
+curl -vk -1 https://192.168.80.199/ https://192.168.80.199/login.php
+
+# Socks5 Proxy
+curl -x socks5h://127.0.0.1:1080 -kv https://solarianprogrammer.com
