@@ -1,9 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/tools/Typora:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/honghaier/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -52,7 +51,15 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z d)
+plugins=(
+  z
+  git
+  tmux
+  history
+  web-search
+  common-aliases
+  colored-man-pages
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -74,8 +81,27 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id.pub"
 
+# cheat
+export EDITOR='vim'
+export CHEATCOLORS=TRUE
+
+# tmux
+# export ZSH_TMUX_AUTOSTART=true
+
+CUSTOM_TOOLS_PATH="\
+/usr/local/texlive/2017/bin/x86_64-linux/\
+:/usr/local/tools/clang+llvm-6.0.0-x86_64-linux-gnu-ubuntu-14.04/bin/\
+"
+
+CUSTOM_LIBRARY_PATH="\
+/usr/local/tools/clang+llvm-6.0.0-x86_64-linux-gnu-ubuntu-14.04/lib/\
+:/usr/local/tools/boost_1_61_0/lib/\
+"
+
+export PATH=$CUSTOM_TOOLS_PATH:$PATH
+export LD_LIBRARY_PATH=$CUSTOM_LIBRARY_PATH:$LD_LIBRARY_PATH
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -84,10 +110,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# cheat
-export EDITOR=/usr/bin/vim
-export CHEATCOLORS=TRUE
 
 # tmux
 alias tmux="tmux -2"
