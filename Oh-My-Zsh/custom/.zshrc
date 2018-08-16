@@ -93,6 +93,7 @@ export CHEATCOLORS=TRUE
 CUSTOM_TOOLS_PATH="\
 /usr/local/texlive/2017/bin/x86_64-linux/\
 :/usr/local/tools/clang+llvm-6.0.0-x86_64-linux-gnu-ubuntu-14.04/bin/\
+:/usr/local/tools/systemtap-3.3/bin/\
 "
 
 CUSTOM_LIBRARY_PATH="\
