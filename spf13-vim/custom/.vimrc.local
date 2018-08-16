@@ -12,14 +12,14 @@
 		" Disable whitespace stripping
 		let g:spf13_keep_trailing_whitespace = 1
 " }
-
+"
 " YouCompleteMe {
 		let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 		nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 		nnoremap <leader>gi :YcmCompleter GoToDefinition<CR>
 " }
 "
-
+"
 " vim-colors-solarized {
 		if has('gui_running')
 				set background=light
@@ -28,4 +28,12 @@
 		endif
 		syntax enable
 		colorscheme solarized
+" }
+"
+" " ctrlp {
+		let g:ctrlp_match_window = 'max:50,results:50'
+" }
+"
+" " ctrlp-funky {
+		let g:ctrlp_funky_nolim = 1
 " }
